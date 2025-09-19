@@ -1,4 +1,5 @@
 import AgentCard from "./AgentCard";
+import TeamBuilderButton from "./TeamBuilderButton";
 import sarahChen from "@/assets/sarah-chen.jpg";
 import marcusRodriguez from "@/assets/marcus-rodriguez.jpg";
 import aishaPatel from "@/assets/aisha-patel.jpg";
@@ -6,31 +7,37 @@ import aishaPatel from "@/assets/aisha-patel.jpg";
 const AgentShowcase = () => {
   const featuredAgents = [
     {
+      id: "sarah-chen",
       name: "Sarah Chen",
       role: "Data Science Specialist",
       avatar: sarahChen,
       rating: 4.9,
       reviews: 127,
-      price: "$45/hour",
+      price: 45,
       skills: ["Machine Learning", "Python", "SQL", "Data Visualization", "Statistics", "TensorFlow"],
+      estimatedTime: 30
     },
     {
+      id: "marcus-rodriguez", 
       name: "Marcus Rodriguez",
       role: "Full-Stack Developer",
       avatar: marcusRodriguez,
       rating: 4.8,
       reviews: 93,
-      price: "$38/hour",
+      price: 38,
       skills: ["React", "Node.js", "TypeScript", "AWS", "MongoDB", "GraphQL"],
+      estimatedTime: 45
     },
     {
-      name: "Aisha Patel",
+      id: "aisha-patel",
+      name: "Aisha Patel", 
       role: "AI Strategy Consultant",
       avatar: aishaPatel,
       rating: 5.0,
       reviews: 84,
-      price: "$85/hour",
+      price: 85,
       skills: ["AI Strategy", "Business Intelligence", "Process Automation", "ROI Analysis"],
+      estimatedTime: 60
     },
   ];
 
@@ -58,7 +65,7 @@ const AgentShowcase = () => {
         {/* Agent Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuredAgents.map((agent) => (
-            <AgentCard key={agent.name} {...agent} />
+            <AgentCard key={agent.id} {...agent} price={`$${agent.price}/hour`} />
           ))}
         </div>
 
@@ -70,6 +77,9 @@ const AgentShowcase = () => {
           </button>
         </div>
       </div>
+
+      {/* Team Builder Button */}
+      <TeamBuilderButton availableAgents={featuredAgents} />
     </section>
   );
 };
